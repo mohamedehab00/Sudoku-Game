@@ -140,8 +140,9 @@ def grid_clear():
     grid.clear()
     for i in range(N):
         lst = [0 for x in range(N)]
+        lst2 = [0 for x in range(N)]
         grid.append(lst)
-        cpy_grid.append(lst)
+        cpy_grid.append(lst2)
 
 
 
