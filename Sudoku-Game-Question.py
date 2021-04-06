@@ -46,13 +46,17 @@ def check_win():
 
 #This function checks if given position is valid or not 
 def check_valid_position(i, j):
-    if 0 <= i < 9 and 0 <= j < 9 :    
+    if 0 <= i < N and 0 <= j < N :    
         return True
+    else:
+        return False
 
 #This function checks if given cell is empty or not 
 def check_empty_cell(i, j):
     if grid[i][j] == 0:
         return True
+    else:
+        return False
 
 #This function checks if given cell is original or not
 def check_original_cell(i, j):
@@ -61,7 +65,7 @@ def check_original_cell(i, j):
 
 #This function checks if the given cell is valid with the given numbers
 def check_valid_value(i, j, v):
-    if 0 <= v <= 9:
+    if 0 <= v <= N:
         if v == 0:
             return True
         else:
@@ -72,13 +76,13 @@ def check_valid_value(i, j, v):
             for r in range(N):
                 if v == grid[r][j]:
                     return False
-            slot_row = ceil((i+1) / 3)
-            slot_col = ceil((j+1) / 3)
-            L_r = (slot_row*3)
-            L_c = (slot_col*3)
+            slot_row = ceil((i+1) / root_N)
+            slot_col = ceil((j+1) / root_N)
+            L_r = (slot_row*root_N)
+            L_c = (slot_col*root_N)
             #check mini grid
-            for row in range(L_r-3,L_r):
-                for col in range(L_c-3,L_c):
+            for row in range(L_r-root_N,L_r):
+                for col in range(L_c-root_N,L_c):
                     if grid[row][col] == v:
                         return False
             return True
@@ -140,7 +144,7 @@ def grid_clear():
     grid.clear()
     for i in range(N):
         lst = [0 for x in range(N)]
-        lst2 = [0 for x in range(N)]
+        lst2 = [0 for y in range(N)]
         grid.append(lst)
         cpy_grid.append(lst2)
 
